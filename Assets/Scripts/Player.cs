@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class Player : MonoBehaviour
     int pellets = 0;
 
     public GameObject torchObject;
+    public GameObject exit;
+    public Enemy enemy;
     public TMP_Text objectiveText;
+
+    private void Start()
+    {
+        exit.SetActive(false);
+    }
 
     void Update()
     {
@@ -32,7 +40,20 @@ public class Player : MonoBehaviour
             if (pellets == 4)
             {
                 objectiveText.SetText("CURRENT OBJECTIVE: Escape");
+                exit.SetActive(true);
+
                 canUseTorch = false;
+            }
+
+            enemy.gameObject.SetActive(true);
+            enemy.Teleport(transform);
+        }
+
+        if (other.CompareTag("Exit"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene("WinScene");
             }
         }
     }
