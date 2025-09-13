@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pellet
   - Exit
+  - Enemy
   layers:
   - Default
   - TransparentFX
