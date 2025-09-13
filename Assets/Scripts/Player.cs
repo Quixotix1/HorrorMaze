@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     int pellets = 0;
 
     public GameObject torchObject;
+    public GameObject torchImage;
     public GameObject exit;
     public Enemy enemy;
     public TMP_Text objectiveText;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         }
 
         torchObject.SetActive(torch);
+        torchImage.SetActive(torch);
     }
 
     private void OnTriggerEnter(Collider other)
